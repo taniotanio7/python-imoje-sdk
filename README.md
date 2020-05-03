@@ -1,11 +1,12 @@
 # imoje-sdk
 
-Add a short description here!
-
+SDK for iMoje payment gateway provided by ING Bank
 
 ## Description
 
-A longer description of your project goes here...
+This package implements comunication with the payment gateway API described here:
+  - https://data.imoje.pl/docs/api-transaction.pdf
+  - https://data.imoje.pl/docs/api-paywall.pdf
 
 
 ## Note
