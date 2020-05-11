@@ -133,9 +133,9 @@ class Transaction:
         print(json.dumps(response, indent=4, sort_keys=True))
 
         request.raise_for_status()
-        self.status = TransactionStatus(response.transaction.status)
-        self.id = response.transaction.id
-        return Action(**response.action)
+        self.status = TransactionStatus(response["transaction"]["status"])
+        self.id = response["transaction"]["id"]
+        return Action(**response["action"])
 
     def return_payment(self, api_client: Client, amount: int = None) -> None:
         """
