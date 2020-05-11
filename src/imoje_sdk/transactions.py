@@ -138,7 +138,7 @@ class Transaction:
         return Action(**response["action"])
 
     @staticmethod
-    def return_payment(api_client: Client, amount: int, transactionId: str, storeId) -> None:
+    def return_payment(api_client: Client, amount: int, transaction_id: str, store_id) -> None:
         """
         Return the payment that was made by the client
         @param api_client: Client instance used to communicate with the imoje API
@@ -147,8 +147,8 @@ class Transaction:
         """
         payload = {
             "type": "refund",
-            "serviceId": storeId,
+            "serviceId": store_id,
             "amount": amount,
         }
-        request = api_client.request(path=f"transaction/{transactionId}/refund", payload=payload)
+        request = api_client.request(path=f"transaction/{transaction_id}/refund", payload=payload)
         request.raise_for_status()
