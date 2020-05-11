@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "79cc3e7de3e8d7c7140568cbff6076bec8e3af4073233102023f567f6e245afb"
+            "sha256": "9e263355905cdbe2ee29780544594f1c17cd96f792482c9d45a00b66c7e119a7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -41,12 +41,49 @@
             "editable": true,
             "path": "."
         },
+        "marshmallow": {
+            "hashes": [
+                "sha256:56663fa1d5385c14c6a1236badd166d6dee987a5f64d2b6cc099dadf96eb4f09",
+                "sha256:f12203bf8d94c410ab4b8d66edfde4f8a364892bde1f6747179765559f93d62a"
+            ],
+            "version": "==3.5.2"
+        },
+        "marshmallow-dataclass": {
+            "hashes": [
+                "sha256:5bb8dda31136103171a921c7685c66413ef6abc813d4baa6be60ac65ef906293"
+            ],
+            "index": "pypi",
+            "version": "==7.5.2"
+        },
+        "mypy-extensions": {
+            "hashes": [
+                "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d",
+                "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"
+            ],
+            "version": "==0.4.3"
+        },
         "requests": {
             "hashes": [
                 "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee",
                 "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"
             ],
             "version": "==2.23.0"
+        },
+        "typing-extensions": {
+            "hashes": [
+                "sha256:6e95524d8a547a91e08f404ae485bbb71962de46967e1b71a0cb89af24e761c5",
+                "sha256:79ee589a3caca649a9bfd2a8de4709837400dfa00b6cc81962a1e6a1815969ae",
+                "sha256:f8d2bd89d25bc39dabe7d23df520442fa1d8969b82544370e03d88b5a591c392"
+            ],
+            "version": "==3.7.4.2"
+        },
+        "typing-inspect": {
+            "hashes": [
+                "sha256:3b98390df4d999a28cf5b35d8b333425af5da2ece8a4ea9e98f71e7591347b4f",
+                "sha256:8f1b1dd25908dbfd81d3bebc218011531e7ab614ba6e5bf7826d887c834afab7",
+                "sha256:de08f50a22955ddec353876df7b2545994d6df08a2f45d54ac8c05e530372ca0"
+            ],
+            "version": "==0.6.0"
         },
         "urllib3": {
             "hashes": [
