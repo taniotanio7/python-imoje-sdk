@@ -121,6 +121,9 @@ class Transaction:
         @param api_client: Client instance used to communicate with the imoje API
         @return: Action instance
         """
+        if self.status is not TransactionStatus.NOT_SEND:
+            raise Exception("Payment was already initialized")
+
         payload = {**self.asdict(), "type": "sale"}
 
         print("request")
