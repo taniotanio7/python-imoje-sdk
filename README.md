@@ -6,7 +6,6 @@ SDK for iMoje payment gateway provided by ING Bank
 
 This package implements comunication with the payment gateway API described here:
   - https://data.imoje.pl/docs/api-transaction.pdf
-  - https://data.imoje.pl/docs/api-paywall.pdf
 
 ## Implemented API features
 
