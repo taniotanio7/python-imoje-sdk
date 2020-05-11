@@ -156,3 +156,36 @@ class Transaction:
         }
         request = api_client.request(path=f"transaction/{transaction_id}/refund", payload=payload)
         request.raise_for_status()
+
+    @classmethod
+    def fetch(cls, api_client: Client, transaction_id: str):
+        """
+        Create the Transaction instance from the API data based on provided ID
+        @param api_client: Client instance used to communicate with the imoje API
+        @param transaction_id: Transaction ID to fetch data from
+        @return: Transaction instance
+        """
+        request = api_client.request(path=f"transaction/{transaction_id}", payload={}, method=AllowedHTTPMetohds.GET)
+        request.raise_for_status()
+        transaction = request.json()["transaction"]
+
+        payment_method = PaymentMethod(transaction["paymentMethod"])
+        if payment_method is PaymentMethod.PAY_BY_LINK or payment_method is PaymentMethod.ING:
+            payment_method_details = PayByLinkBank(transaction["paymentMethodCode"])
+        elif payment_method is PaymentMethod.CREDIT_CARD:
+            payment_method_details = PayByCardMethod(transaction["paymentMethodCode"])
+        elif payment_method is PaymentMethod.BLIK:
+            payment_method_details = BlikMethod.BLIK
+        else:
+            raise Exception("Received payment method is not supported")
+
+        customer = ClientDetails.Schema().load(transaction["customer"])
+        billing = ClientAddress.Schema().load(transaction["billing"])
+        shipping = ClientAddress.Schema().load(transaction["shipping"])
+
+        return cls(amount=transaction["amount"], currency=transaction["currency"], store_id=transaction["serviceId"],
+                   order_id=transaction["orderId"], payment_method=payment_method,
+                   payment_method_details=payment_method_details, success_return_url=transaction["notificationUrl"],
+                   failure_return_url=transaction["notificationUrl"],
+                   customer=customer, title=transaction["title"], status=TransactionStatus(transaction["status"]),
+                   billing=billing, shipping=shipping, id=transaction_id)

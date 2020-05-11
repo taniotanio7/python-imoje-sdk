@@ -10,9 +10,9 @@ This package implements comunication with the payment gateway API described here
 
 ## Implemented API features
 
-- [ ] Transactions
+- [x] Transactions
   - [x] Creating new transactions
-  - [ ] Retrieving transaction data
+  - [x] Retrieving transaction data
   - [x] Handling refunds
 - [ ] Stats
   - [ ] Listing all transactions
