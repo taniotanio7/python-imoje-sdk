@@ -5,7 +5,8 @@ import json
 from marshmallow_dataclass import dataclass
 from marshmallow import validate, Schema, post_dump
 
-from imoje_sdk.enums import PaymentMethod, PayByLinkBank, PayByCardMethod, TransactionStatus
+from imoje_sdk.enums import PaymentMethod, PayByLinkBank, PayByCardMethod, BlikMethod, TransactionStatus, \
+    AllowedHTTPMetohds
 from imoje_sdk.client import Client
 
 
@@ -56,7 +57,7 @@ class Action:
 
 class Transaction:
     def __init__(self, amount: int, currency: str, store_id: str, order_id: str, payment_method: PaymentMethod,
-                 payment_method_details: Union[PayByLinkBank, PayByCardMethod], success_return_url: str,
+                 payment_method_details: Union[PayByLinkBank, PayByCardMethod, BlikMethod], success_return_url: str,
                  failure_return_url: str, customer: ClientDetails, title="",
                  status=TransactionStatus.NOT_SEND, billing: ClientAddress = None,
                  shipping: ClientAddress = None, id: str = None):

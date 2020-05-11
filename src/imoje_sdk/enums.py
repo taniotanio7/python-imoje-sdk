@@ -53,6 +53,10 @@ class PayByLinkBank(Enum):
     ENVELO = "envelo"
     ING = "ing"
 
+@unique
+class BlikMethod(Enum):
+    BLIK = "blik"
+
 
 @unique
 class PayByCardMethod(Enum):
