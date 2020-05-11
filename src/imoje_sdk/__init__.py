@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from .client import *
+from .enums import *
+from .transactions import *
 from pkg_resources import get_distribution, DistributionNotFound
 
 try:
