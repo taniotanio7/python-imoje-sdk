@@ -1,4 +1,4 @@
-from urllib.parse import urljoin
+import posixpath
 
 import requests
 
@@ -24,14 +24,14 @@ class Client:
         if headers:
             _headers.update(headers)
 
-        url = urljoin(self.request_url, path)
+        url = posixpath.join(self.request_url, path)
 
         if method is AllowedHTTPMetohds.POST:
-            return requests.post(url, data=payload, headers=_headers, timeout=60, **kwargs)
+            return requests.post(url, json=payload, headers=_headers, timeout=60, **kwargs)
         else:
             # GET
             return requests.get(url, params=payload, headers=_headers, timeout=60, **kwargs)
 
     @property
     def request_url(self):
-        return urljoin(self.BASE_URL, self.merchant_id)
+        return posixpath.join(self.BASE_URL, self.merchant_id)
