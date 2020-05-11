@@ -51,6 +51,7 @@ class PayByLinkBank(Enum):
     BSPB = "bspb"  # Bank Spółdzielczy w Brodnicy
     NEST = "nest"
     ENVELO = "envelo"
+    ING = "ing"
 
 
 @unique
