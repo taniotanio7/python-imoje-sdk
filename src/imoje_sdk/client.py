@@ -13,7 +13,7 @@ class Client:
         self.merchant_id = merchant_id
         self._auth_token = auth_token
 
-    def _request(self, path: str, payload: dict, method: AllowedHTTPMetohds = "POST", headers=None, **kwargs):
+    def request(self, path: str, payload: dict, method: AllowedHTTPMetohds = "POST", headers=None, **kwargs):
         _headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
