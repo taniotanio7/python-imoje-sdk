@@ -1,3 +1,5 @@
+from urllib.parse import urljoin
+
 import requests
 
 from imoje_sdk.enums import AllowedHTTPMetohds
@@ -21,7 +23,7 @@ class Client:
         if headers:
             _headers.update(headers)
 
-        url = f"{self.request_url}/{path}"
+        url = urljoin(self.request_url, path)
 
         if method == AllowedHTTPMetohds.POST:
             return requests.post(url, data=payload, headers=_headers, timeout=60, **kwargs)
@@ -31,4 +33,4 @@ class Client:
 
     @property
     def request_url(self):
-        return f"{self.BASE_URL}/{self.merchant_id}"
+        return urljoin(self.BASE_URL, self.merchant_id)
