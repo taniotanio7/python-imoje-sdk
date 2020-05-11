@@ -13,7 +13,8 @@ class Client:
         self.merchant_id = merchant_id
         self._auth_token = auth_token
 
-    def request(self, path: str, payload: dict, method: AllowedHTTPMetohds = "POST", headers=None, **kwargs):
+    def request(self, path: str, payload: dict, method: AllowedHTTPMetohds = AllowedHTTPMetohds.POST, headers=None,
+                **kwargs):
         _headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ class Client:
 
         url = urljoin(self.request_url, path)
 
-        if method == AllowedHTTPMetohds.POST:
+        if method is AllowedHTTPMetohds.POST:
             return requests.post(url, data=payload, headers=_headers, timeout=60, **kwargs)
         else:
             # GET
