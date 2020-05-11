@@ -137,19 +137,18 @@ class Transaction:
         self.id = response["transaction"]["id"]
         return Action(**response["action"])
 
-    def return_payment(self, api_client: Client, amount: int = None) -> None:
+    @staticmethod
+    def return_payment(api_client: Client, amount: int, transactionId: str, storeId) -> None:
         """
         Return the payment that was made by the client
         @param api_client: Client instance used to communicate with the imoje API
         @param amount: Specify an amount to return other than was made
         @return: None
         """
-        if self.status == TransactionStatus.NOT_SEND:
-            raise Exception("Cannot return a payment that was not send")
         payload = {
             "type": "refund",
-            "serviceId": self.store_id,
-            "amount": self.amount if amount is None else amount
+            "serviceId": storeId,
+            "amount": amount,
         }
-        request = api_client.request(path=f"transaction/{self.id}/refund", payload=payload)
+        request = api_client.request(path=f"transaction/{transactionId}/refund", payload=payload)
         request.raise_for_status()
